@@ -275,7 +275,7 @@ class ModelGenerator extends AbstractClassGenerator implements Generator
 
     private function castForColumn(Column $column): ?string
     {
-        if (isset($column->castType())) {
+        if (!is_null($column->castType())) {
             return $column->castType();
         }
         
