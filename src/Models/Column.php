@@ -11,13 +11,16 @@ class Column
     private string $name;
 
     private string $dataType;
+    
+    private string $castType;
 
     private array $attributes;
 
-    public function __construct(string $name, string $dataType = 'string', array $modifiers = [], array $attributes = [])
+    public function __construct(string $name, string $dataType = 'string', string $castType = null, array $modifiers = [], array $attributes = [])
     {
         $this->name = $name;
         $this->dataType = $dataType;
+        $this->castType = $castType;
         $this->modifiers = $modifiers;
         $this->attributes = $attributes;
     }
@@ -30,6 +33,11 @@ class Column
     public function dataType(): string
     {
         return $this->dataType;
+    }
+    
+    public function castType(): string
+    {
+        return $this->castType;
     }
 
     public function attributes(): array
