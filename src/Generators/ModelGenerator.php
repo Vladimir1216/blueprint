@@ -254,12 +254,12 @@ class ModelGenerator extends AbstractClassGenerator implements Generator
 
     protected function hiddenColumns(array $columns): array
     {
-        return array_filter(
+        return array_keys(array_filter(
             array_map(
                 fn (Column $column) => in_array('hidden', $column->attributes()) || in_array($column->name(), ['password', 'remember_token']),
                 $columns
             )
-        );
+        ));
     }
 
     protected function castableColumns(array $columns): array
