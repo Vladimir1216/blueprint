@@ -105,7 +105,7 @@ class ModelLexer implements Lexer
         'ondelete' => 'onDelete',
         'onupdate' => 'onUpdate',
         'comment' => 'comment',
-        'nonfillable' => 'nonFillable',
+        'nonfillable' => 'nonfillable',
         'hidden' => 'hidden',
     ];
 
