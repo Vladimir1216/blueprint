@@ -35,7 +35,7 @@ class Column
         return $this->dataType;
     }
     
-    public function castType(): string
+    public function castType(): ?string
     {
         return $this->castType;
     }
