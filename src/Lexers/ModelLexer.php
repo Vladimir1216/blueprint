@@ -105,6 +105,8 @@ class ModelLexer implements Lexer
         'ondelete' => 'onDelete',
         'onupdate' => 'onUpdate',
         'comment' => 'comment',
+        'nonfillable' => 'nonFillable',
+        'hidden' => 'hidden',
     ];
 
     public function analyze(array $tokens): array
