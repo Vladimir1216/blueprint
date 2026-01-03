@@ -225,18 +225,20 @@ class ModelGenerator extends AbstractClassGenerator implements Generator
 
     protected function fillableColumns(array $columns): array
     {
-        return array_diff(
-            array_keys($columns),
-            [
-                'id',
-                'deleted_at',
-                'created_at',
-                'updated_at',
-                'remember_token',
-                'softdeletes',
-                'softdeletestz',
-            ]
-        );
+        return array_keys(array_filter(
+            array_map(
+                fn (Column $column) => !in_array('nonfillable', $column->modifiers()) && !in_array($column->name(), [
+                    'id',
+                    'deleted_at',
+                    'created_at',
+                    'updated_at',
+                    'remember_token',
+                    'softdeletes',
+                    'softdeletestz',
+                ]),
+                $columns
+            )
+        ));
     }
 
     private function pretty_print_array(array $data, bool $assoc = true, int $indent = 4): string
