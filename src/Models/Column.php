@@ -12,7 +12,7 @@ class Column
 
     private string $dataType;
     
-    private string $castType;
+    private ?string $castType;
 
     private array $attributes;
 
