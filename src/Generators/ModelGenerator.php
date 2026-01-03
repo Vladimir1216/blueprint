@@ -275,6 +275,10 @@ class ModelGenerator extends AbstractClassGenerator implements Generator
 
     private function castForColumn(Column $column): ?string
     {
+        if (isset($column->castType())) {
+            return $column->castType();
+        }
+        
         if ($column->dataType() === 'date') {
             return 'date';
         }
