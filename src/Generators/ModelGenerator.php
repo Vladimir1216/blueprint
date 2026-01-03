@@ -227,7 +227,7 @@ class ModelGenerator extends AbstractClassGenerator implements Generator
     {
         return array_keys(array_filter(
             array_map(
-                fn (Column $column) => !in_array('nonfillable', $column->modifiers()) || !in_array($column->name(), [
+                fn (Column $column) => !in_array('nonfillable', $column->modifiers()) && !in_array($column->name(), [
                     'id',
                     'deleted_at',
                     'created_at',
