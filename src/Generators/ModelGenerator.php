@@ -256,7 +256,7 @@ class ModelGenerator extends AbstractClassGenerator implements Generator
     {
         return array_filter(
             array_map(
-                fn (Column $column) => in_array('hidden', $column->attributes) || in_array($column->name(), ['password', 'remember_token']),
+                fn (Column $column) => in_array('hidden', $column->attributes()) || in_array($column->name(), ['password', 'remember_token']),
                 $columns
             )
         );
