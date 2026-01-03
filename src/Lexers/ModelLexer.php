@@ -244,6 +244,7 @@ class ModelLexer implements Lexer
     private function buildColumn(string $name, string $definition): Column
     {
         $data_type = null;
+        $cast_type = null;
         $modifiers = [];
 
         $tokens = $this->parseColumn($definition);
@@ -255,6 +256,10 @@ class ModelLexer implements Lexer
                 $data_type = 'id';
                 if (isset($parts[1])) {
                     $attributes = [$parts[1]];
+                }
+            } elseif ($value === 'cast') {
+                if (isset($parts[1])) {
+                    $cast_type = $parts[1];
                 }
             } elseif (isset(self::$dataTypes[strtolower($value)])) {
                 $attributes = $parts[1] ?? null;
@@ -284,7 +289,7 @@ class ModelLexer implements Lexer
             $data_type = $is_foreign_key ? 'id' : 'string';
         }
 
-        return new Column($name, $data_type, $modifiers, $attributes ?? []);
+        return new Column($name, $data_type, $cast_type, $modifiers, $attributes ?? []);
     }
 
     /**
